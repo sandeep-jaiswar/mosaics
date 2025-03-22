@@ -21,9 +21,9 @@ const FilterAccordion = ({
   };
 
   return (
-    <div className="border w-full">
+    <div className="w-full border-b">
       <button
-        className="flex justify-between items-center w-full p-4 text-lg font-medium bg-gray-100 hover:bg-gray-200 transition"
+        className="flex justify-between items-center w-full p-4 text-lg font-medium bg-white transition"
         onClick={handleExpand}
       >
         <span>{title}</span>
@@ -38,11 +38,18 @@ const FilterAccordion = ({
         />
       </button>
       {expanded && (
-        <div className="p-4 border-t border-gray-300">
+        <div className="p-4 border-t">
           {options.map((option: string) => (
-            <div key={option}>
-              <input type="checkbox" id={option} name={option} value={option} onChange={handleFilterChange} />
-              <label htmlFor={option}>{option}</label>
+            <div key={option} className="flex justify-start items-center gap-2">
+              <input
+                className="h-full"
+                type="checkbox"
+                id={option}
+                name={option}
+                value={option}
+                onChange={handleFilterChange}
+              />
+              <label htmlFor={option} className="self-center mt-1">{option}</label>
             </div>
           ))}
         </div>

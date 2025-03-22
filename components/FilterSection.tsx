@@ -14,7 +14,6 @@ const FilterSection = () => {
   const discountFilters = ["10%", "20%", "30%", "40%", "50%"];
   const sortFilters = ["Newest", "Oldest", "Best Selling"];
   const filterOptions = {
-    size: sizeFilters,
     availability: availabilityFilters,
     price: priceFilters,
     color: colorFilters,
@@ -28,7 +27,15 @@ const FilterSection = () => {
 
   return (
     <div className="h-max col-span-1">
-      <h2>Filter</h2>
+      <h2 className="pb-5">Filter</h2>
+      <div className="flex flex-col border-b">
+        <div className="pb-2">Size</div>
+        <div className="flex flex-wrap gap-2 pb-5">
+          {sizeFilters.map((size) => (
+            <button key={size} className="p-2 border border-black">{size}</button>
+          ))}
+        </div>
+      </div>
       {Object.entries(filterOptions).map(([title, options]) => {
         return <FilterAccordion key={title} title={title} options={options} />;
       })}
