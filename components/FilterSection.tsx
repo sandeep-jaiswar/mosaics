@@ -27,7 +27,7 @@ const FilterSection = () => {
   };
 
   return (
-    <div className="w-1/5">
+    <div className="h-max col-span-1">
       <h2>Filter</h2>
       {Object.entries(filterOptions).map(([title, options]) => {
         return <FilterAccordion key={title} title={title} options={options} />;

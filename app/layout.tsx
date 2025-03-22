@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`w-screen h-screen ${balsamiqSans.variable} antialiased`}>
+      <body className={`w-screen h-screen ${balsamiqSans.variable} antialiased overflow-x-hidden overflow-y-scroll`}>
         <Header />
         {children}
       </body>
