@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Balsamiq_Sans } from "next/font/google";
+import Header from "@/components/Header";
 import "./globals.css";
 
 const balsamiqSans = Balsamiq_Sans({
@@ -13,7 +14,7 @@ const balsamiqSans = Balsamiq_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Mosaics",
+  title: "Mosaics | Home",
   description: "Ecommerce store for mosaics",
 };
 
@@ -24,7 +25,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${balsamiqSans.variable} antialiased`}>{children}</body>
+      <body className={`w-screen h-screen ${balsamiqSans.variable} antialiased`}>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }
