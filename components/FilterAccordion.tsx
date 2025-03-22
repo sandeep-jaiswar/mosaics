@@ -23,7 +23,7 @@ const FilterAccordion = ({
   return (
     <div className="w-full border-b">
       <button
-        className="flex justify-between items-center w-full p-4 text-lg font-medium bg-white transition"
+        className="flex justify-between items-center w-full p-2 bg-white transition"
         onClick={handleExpand}
       >
         <span>{title}</span>
@@ -38,7 +38,7 @@ const FilterAccordion = ({
         />
       </button>
       {expanded && (
-        <div className="p-4 border-t">
+        <div className="p-2 border-t border-bg">
           {options.map((option: string) => (
             <div key={option} className="flex justify-start items-center gap-2">
               <input
@@ -49,7 +49,7 @@ const FilterAccordion = ({
                 value={option}
                 onChange={handleFilterChange}
               />
-              <label htmlFor={option} className="self-center mt-1">{option}</label>
+              <label htmlFor={option} className="self-center mt-1 text-sm">{option}</label>
             </div>
           ))}
         </div>

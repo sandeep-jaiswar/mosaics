@@ -1,7 +1,7 @@
 const Header = () => {
   return (
-    <header className="px-5 shadow fixed w-full z-50 bg-white">
-      <div className="p-1">
+    <header className="shadow fixed w-full z-50 bg-white">
+      <div className="max-w-5xl mx-auto">
         <h1 className="text-2xl font-bold">Mosaics</h1>
         <nav className="flex justify-between">
           <ul className="flex space-x-5">
