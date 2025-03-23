@@ -105,7 +105,7 @@ export default function Home() {
     },
   ];
   return (
-    <div className="font-[family-name:var(--font-balsamiq-sans)] p-5 max-w-5xl mx-auto">
+    <div className="font-[family-name:var(--font-balsamiq-sans)] max-w-5xl mx-auto py-5">
       <div className="grid grid-cols-5 gap-7 my-20">
         <FilterSection />
         <ProductDisplaySection products={products} />
