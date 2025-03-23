@@ -10,8 +10,7 @@ const FilterAccordion = ({
   options: string[];
 }) => {
   const [expanded, setExpanded] = useState(false);
-  const { filter, setFilter } = useFilterContext();
-  console.log(filter);
+  const { setFilter } = useFilterContext();
   const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFilter(e.target.value);
   };

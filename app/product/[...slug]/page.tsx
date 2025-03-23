@@ -1,40 +1,33 @@
 import PDPImageDisplaySection from "@/components/PDPImageDisplaySection";
+import { fetchAllProducts, fetchProductUsingId } from "@/utils/helper";
+
+type PDPProps = {
+  params: Promise<{ slug: string }>
+}
+
+export async function generateStaticParams() {
+  try {
+    const products = await fetchAllProducts();
+    return products.map((product) => ({
+      slug: [product._id.toString()],
+    }));
+  } catch (error) {
+    console.error("Failed to fetch products", error);
+    return [];
+  }
+}
+
+
 
 const ProductDetailPage = async ({
   params,
-}: {
-  params: Promise<{ slug: string }>;
-}) => {
+}: PDPProps) => {
   const { slug } = await params;
-  const data = {
-    id: "55854ea2-2fb8-447f-b47d-819da3a1b598",
-    name: "Sangria",
-    description: "Women Embroidery Fit & Flare Dress",
-    imgUrls: [
-      "/images/7.jpg",
-      "/images/8.jpg",
-      "/images/9.jpg",
-      "/images/10.jpg",
-      "/images/11.jpg",
-    ],
-    price: 1000,
-    rating: 0,
-    discount: 10,
-    priceAfterDiscount: 900,
-    specifications: {
-      brand: "Sangria",
-      color: "Blue",
-      fabric: "Cotton",
-      pattern: "Embroidered",
-      size: "S",
-      sleeve: "3/4 Sleeve",
-      neck: "Round Neck",
-      fit: "Regular",
-      length: "Knee Length",
-      occasion: "Casual",
-    },
-  };
-  const { imgUrls, description, name, price, priceAfterDiscount, discount } =
+  const data = await fetchProductUsingId(slug.toString());
+  if (!data) {
+    return <div>Product not found</div>
+  }
+  const { imgUrls = [], description = "", name = "", price = "", priceAfterDiscount = "", discount = "", specifications = {} } =
     data;
   return (
     <div className="font-[family-name:var(--font-balsamiq-sans)] py-5 max-w-5xl mx-auto">
@@ -65,9 +58,9 @@ const ProductDetailPage = async ({
           <div className="my-4">
             <h2 className="">Specifications</h2>
             <ul className="text-gray-600 text-sm">
-              {Object.entries(data.specifications).map(([key, value]) => (
+              {Object.entries(specifications).map(([key, value]) => (
                 <li key={key}>
-                  <span className="font-semibold">{key}:</span> {value}
+                  <span className="font-semibold">{key}:</span> {`${value}`}
                 </li>
               ))}
             </ul>

@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 const ProductDisplay = ({
-  id,
+  _id,
   name,
   imgUrls,
   discount,
@@ -19,8 +19,7 @@ const ProductDisplay = ({
   const imgAlt = `${name} image`;
 
   const onClick = () => {
-    console.log("Product clicked");
-    router.push(`/product/${id}`);
+    router.push(`/product/${_id}`);
   };
 
   return (
